@@ -1,0 +1,1 @@
+cp ./assemble /bin/assemble

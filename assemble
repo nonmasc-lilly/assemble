@@ -1,0 +1,50 @@
+#!/bin/bash
+
+VERSION="1.0"
+INPUT=""
+FINPUT=false
+HEXFLAGS="-X"
+MODE=64
+while getopts "ef:rx" flag; do
+        case $flag in
+        e)      MODE=32;;
+        f)      if [ "$INPUT" != "" ]; then
+                        echo "Error: file input and string input are both used."
+                        exit
+                fi
+                INPUT="$OPTARG"
+                FINPUT=true;;
+        h)
+                echo "Assemble $VERSION -- Lilly H. St Claire"
+                echo "  A simple command line utility to quickly check"
+                echo "  the assembled values of assembly expressions."
+                echo "\n  Usage: assemble {OPTIONS}"
+                echo "\nOptions:"
+                echo "  -e"
+                echo "    Sets assembler to 32 bit mode."
+                echo "  -f <file>"
+                echo "    Reads input from file instead of user input."
+                echo "  -r"
+                echo "    Sets assembler to 64 bit mode (default)."
+                echo "  -x"
+                echo "    Sets assembler to 16 bit mode."
+                ;;
+        r)      MODE=64;;
+        x)      MODE=16;;
+        esac
+done
+
+if [ "$INPUT" = "" ]; then
+        echo "Enter assembly (CTR-D to conitnue):"
+        echo "use${MODE}" >> ~/.assemble.input
+        cat >> ~/.assemble.input
+        fasm ~/.assemble.input ~/.assemble.output &&\
+        hexdump $HEXFLAGS ~/.assemble.output &&\
+        rm ~/.assemble.input ~/.assemble.output
+else
+        if [ "$FINPUT" = true ]; then
+                fasm "$INPUT" ~/.assemble.output &&\
+                hexdump $HEXFLAGS ~/.assemble.output &&\
+                rm ~/.assemble.output
+        fi
+fi

@@ -1,0 +1,22 @@
+---     Assemble
+
+A simple command line utility to quickly check the assembled values of assembly expressions.
+
+---     Installation
+
+Run ``./installation.sh'' with sudo.
+
+---     Usage
+
+assemble {OPTIONS}
+
+---     Options
+
+    -e
+        Sets assembler to 32 bit mode.
+    -f <file>
+        Reads input from file instead of user input.
+    -r
+        Sets assembler to 64 bit mode (default).
+    -x
+        Sets assembler to 16 bit mode.
