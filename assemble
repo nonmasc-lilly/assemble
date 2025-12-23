@@ -44,7 +44,7 @@ if [ "$INPUT" = "" ]; then
 else
         if [ "$FINPUT" = true ]; then
                 fasm "$INPUT" ~/.assemble.output &&\
-                hexdump $HEXFLAGS ~/.assemble.output &&\
+                hexdump $HEXFLAGS ~/.assemble.output
                 rm -f ~/.assemble.output
         fi
 fi
