@@ -36,15 +36,15 @@ done
 
 if [ "$INPUT" = "" ]; then
         echo "Enter assembly (CTR-D to conitnue):"
-        echo "use${MODE}" >> ~/.assemble.input
-        cat >> ~/.assemble.input
-        fasm ~/.assemble.input ~/.assemble.output &&\
-        hexdump $HEXFLAGS ~/.assemble.output
-        rm -f ~/.assemble.input ~/.assemble.output
+        echo "use${MODE}" >> /tmp/.assemble.input
+        cat >> /tmp/.assemble.input
+        fasm /tmp/.assemble.input /tmp/.assemble.output &&\
+        hexdump $HEXFLAGS /tmp/.assemble.output
+        rm -f /tmp/.assemble.input /tmp/.assemble.output
 else
         if [ "$FINPUT" = true ]; then
-                fasm "$INPUT" ~/.assemble.output &&\
-                hexdump $HEXFLAGS ~/.assemble.output
-                rm -f ~/.assemble.output
+                fasm "$INPUT" /tmp/.assemble.output &&\
+                hexdump $HEXFLAGS /tmp/.assemble.output
+                rm -f /tmp/.assemble.output
         fi
 fi
