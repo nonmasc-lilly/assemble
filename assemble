@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="1.0"
+VERSION="1.0.1"
 INPUT=""
 FINPUT=false
 HEXFLAGS="-X"
@@ -39,12 +39,12 @@ if [ "$INPUT" = "" ]; then
         echo "use${MODE}" >> ~/.assemble.input
         cat >> ~/.assemble.input
         fasm ~/.assemble.input ~/.assemble.output &&\
-        hexdump $HEXFLAGS ~/.assemble.output &&\
-        rm ~/.assemble.input ~/.assemble.output
+        hexdump $HEXFLAGS ~/.assemble.output
+        rm -f ~/.assemble.input ~/.assemble.output
 else
         if [ "$FINPUT" = true ]; then
                 fasm "$INPUT" ~/.assemble.output &&\
                 hexdump $HEXFLAGS ~/.assemble.output &&\
-                rm ~/.assemble.output
+                rm -f ~/.assemble.output
         fi
 fi
