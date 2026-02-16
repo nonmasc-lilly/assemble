@@ -12,11 +12,26 @@ assemble {OPTIONS}
 
 ---     Options
 
-    -e
-        Sets assembler to 32 bit mode.
-    -f <file>
-        Reads input from file instead of user input.
-    -r
-        Sets assembler to 64 bit mode (default).
-    -x
-        Sets assembler to 16 bit mode.
+        -a <format text>
+                Replacing '\if' with the input argument and '\of' with the
+                output argument set the assembler.
+        -c
+                Disable config loading
+        -f <file>
+                Reads input from file instead of user input.
+        -h
+                Opens help menu.
+        -p <value>
+                Sets the prefix for the file.
+        -x (16 | 32 | 64)
+                Sets $MODE.
+
+---     Config
+
+The config file is to be stored at $HOME/.assemble.config and in the case that
+it does, the following values can be set:
+
+        T_ASSEMBLER     Sets the value of -a
+        PREFIX          Sets the value of -p
+
+Note that $MODE may be used at any point in the config.

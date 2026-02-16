@@ -35,6 +35,8 @@ while getopts "a:cf:hp:x:" flag; do
                 echo "    Reads input from file instead of user input."
                 echo "  -p <prefix>"
                 echo "    Prefix the output with the supplied prefix."
+		echo "  -x <mode>"
+		echo "    Sets mode."
 		echo "\nConfig file:"
 		echo "  The config file is to be stored at \$HOME/.assemble.config, and in the case"
 		echo "  that it does, the following values may be set:"
