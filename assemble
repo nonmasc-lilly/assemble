@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-VERSION="2.0.0"
+VERSION="2.0.1"
 INPUT=
 FINPUT=false
 HEXFLAGS="-X"
 PREFIX=
-MODE=
+MODE=$(getconf LONG_BIT)
 T_ASSEMBLER="fasm \\if \\of"
 CONFIG=true
 
